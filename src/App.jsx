@@ -46,26 +46,26 @@ const Search = () => {
   );
 };
 
-const List = (props) => {
+const List = ({ list }) => {
   return (
     <ul>
-      {props.list.map(function (item) {
+      {list.map(function (item) {
         return <Item key={item.objectID} item={item} />;
       })}
     </ul>
   );
 };
 
-const Item = (props) => {
+const Item = ({ item }) => {
+  const { title, url, author, num_comments, points } = item;
   return (
     <li>
       <span>
-        <a href={props.item.url}>{props.item.title}</a>
+        <a href={url}>{title}</a>
       </span>
-      <span>{props.item.author}</span>
-      <span>{props.item.num_comments}</span>
-      <span>{props.item.title}</span>
-      <span>{props.item.points}</span>
+      <span>{author}</span>
+      <span>{num_comments}</span>
+      <span>{points}</span>
     </li>
   );
 };
