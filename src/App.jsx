@@ -25,11 +25,18 @@ const App = () => {
     },
   ];
   const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = ({ target }) => {
+    setSearchTerm(target.value);
+  };
   return (
     <div>
       <h1>{getTitle("Hello React")}</h1>
 
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Search
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleChange={handleChange}
+      />
 
       <hr />
 
@@ -38,16 +45,13 @@ const App = () => {
   );
 };
 
-const Search = (props) => {
-  const handleChange = (e) => {
-    props.setSearchTerm(e.target.value);
-  };
+const Search = ({ handleChange, searchTerm }) => {
   return (
     <div>
       <label htmlFor="search">Search:</label>
       <input onChange={handleChange} id="search" type="text" />
       <p>
-        Searching for <b>{props.searchTerm}</b>
+        Searching for <b>{searchTerm}</b>
       </p>
     </div>
   );
