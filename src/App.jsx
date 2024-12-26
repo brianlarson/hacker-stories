@@ -24,10 +24,15 @@ const App = () => {
       objectID: 1,
     },
   ];
+
   const [searchTerm, setSearchTerm] = React.useState("");
-  const handleChange = ({ target }) => {
-    setSearchTerm(target.value);
-  };
+
+  const handleChange = ({ target }) => setSearchTerm(target.value);
+
+  const searchedStories = stories.filter((story) => {
+    return story.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div>
       <h1>{getTitle("Hello React")}</h1>
@@ -40,7 +45,7 @@ const App = () => {
 
       <hr />
 
-      <List list={stories} />
+      <List list={searchedStories} />
     </div>
   );
 };
