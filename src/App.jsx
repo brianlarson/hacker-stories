@@ -72,8 +72,7 @@ const List = ({ list }) => {
   );
 };
 
-const Item = ({ item }) => {
-  const { title, url, author, num_comments, points } = item;
+const Item = ({ item: { title, url, author, num_comments, points } }) => {
   return (
     <li>
       <span>
