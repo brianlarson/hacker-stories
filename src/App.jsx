@@ -65,22 +65,22 @@ const Search = ({ handleChange, searchTerm }) => {
 const List = ({ list }) => {
   return (
     <ul>
-      {list.map((item) => (
-        <Item key={item.objectID} item={item} />
+      {list.map(({ objectID, ...item }) => (
+        <Item key={objectID} {...item} />
       ))}
     </ul>
   );
 };
 
-const Item = ({ item: { title, url, author, num_comments, points } }) => {
+const Item = ({ title, url, author, num_comments, points }) => {
   return (
     <li>
       <span>
         <a href={url}>{title}</a>
       </span>
-      <span>{author}</span>
-      <span>{num_comments}</span>
-      <span>{points}</span>
+      <span> {author}</span>
+      <span> {num_comments}</span>
+      <span> {points}</span>
     </li>
   );
 };
