@@ -38,11 +38,11 @@ const App = () => {
   );
 };
 
-const Search = (props) => {
+const Search = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
-    props.onSearch(e);
+    onSearch(e);
   };
   return (
     <div>
