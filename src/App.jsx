@@ -1,4 +1,4 @@
-import { useState } from "react";
+import * as React from "react";
 import "./App.css";
 
 function getTitle(title) {
@@ -24,11 +24,12 @@ const App = () => {
       objectID: 1,
     },
   ];
+  const handleSearch = (e) => console.log(e.target.value);
   return (
     <div>
       <h1>{getTitle("Hello React")}</h1>
 
-      <Search />
+      <Search onSearch={handleSearch} />
 
       <hr />
 
@@ -37,11 +38,19 @@ const App = () => {
   );
 };
 
-const Search = () => {
+const Search = (props) => {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    props.onSearch(e);
+  };
   return (
     <div>
       <label htmlFor="search">Search:</label>
-      <input id="search" type="text" />
+      <input onChange={handleChange} id="search" type="text" />
+      <p>
+        Searching for <b>{searchTerm}</b>
+      </p>
     </div>
   );
 };
