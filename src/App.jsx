@@ -50,19 +50,23 @@ const List = (props) => {
   return (
     <ul>
       {props.list.map(function (item) {
-        return (
-          <li key={item.objectID}>
-            <span>
-              <a href={item.url}>{item.title}</a>
-            </span>
-            <span>{item.author}</span>
-            <span>{item.num_comments}</span>
-            <span>{item.title}</span>
-            <span>{item.points}</span>
-          </li>
-        );
+        return <Item key={item.objectID} item={item} />;
       })}
     </ul>
+  );
+};
+
+const Item = (props) => {
+  return (
+    <li>
+      <span>
+        <a href={props.item.url}>{props.item.title}</a>
+      </span>
+      <span>{props.item.author}</span>
+      <span>{props.item.num_comments}</span>
+      <span>{props.item.title}</span>
+      <span>{props.item.points}</span>
+    </li>
   );
 };
 
